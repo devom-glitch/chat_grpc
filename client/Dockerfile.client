@@ -1,0 +1,4 @@
+FROM golang:1.14.1 
+WORKDIR /app/
+COPY * /app/
+CMD ["./client"]
