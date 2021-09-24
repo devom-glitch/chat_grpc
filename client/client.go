@@ -1,6 +1,7 @@
 package main 
 
 import (
+	"github.com/satori/go.uuid"
 	"context"
 	// "io"
 	"poc_team1/grpcgen"
@@ -10,12 +11,17 @@ import (
 )
 
 func main() {
-	conn,_ := grpc.Dial("localhost:50005",grpc.WithInsecure())
+	myuuid := uuid.NewV4()
+	conn,_ := grpc.Dial(":50005",grpc.WithInsecure())
 	client := grpcgen.NewStreamitClient(conn)
-	in := &pb.Request{Message:"hi"}
+	in := &pb.Request{Message:myuuid.String()}
 	stream,_:= client.DataStreamer(context.Background(),in)
-	for i:=0;i<10;i++{
-		resp,_:= stream.Recv()
+	for {
+		resp,err:= stream.Recv()
+		if err != nil {
+			// log.Printf("%v",err)
+			break
+		}
 		log.Printf(resp.Result)
 	}
 }

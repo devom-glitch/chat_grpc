@@ -12,4 +12,6 @@ WORKDIR /go/src/poc_team1/server
 
 RUN go build -o server server.go 
 
+EXPOSE 50005
+
 CMD "./server"
