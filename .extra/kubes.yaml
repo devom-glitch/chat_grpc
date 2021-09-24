@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: datastreamer
+spec:
+  containers:
+  - name: server
+    image: codevenom/server
+    ports:
+    - containerPort: 50005
+  - name: client
+    image: codevenom/client
+  imagePullSecrets:
+  - name: venomsecret
