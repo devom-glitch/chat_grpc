@@ -11,5 +11,5 @@ spec:
 
 # minikube start 
 # kubectl apply -f kubes.yaml
-# kubectl port-forward pod/datastreamer-pod 50005:50005
+# kubectl port-forward pod/datastreamer-pod 8080:50005
 # go run client/client.go 
