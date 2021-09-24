@@ -12,7 +12,7 @@ import (
 
 func main() {
 	myuuid := uuid.NewV4()
-	conn,_ := grpc.Dial(":50005",grpc.WithInsecure())
+	conn,_ := grpc.Dial(":8080",grpc.WithInsecure())
 	client := grpcgen.NewStreamitClient(conn)
 	in := &pb.Request{Message:myuuid.String()}
 	stream,_:= client.DataStreamer(context.Background(),in)

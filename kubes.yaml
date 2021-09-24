@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: datastreamer-pod
+spec:
+  containers:
+  - name: datastreamer-cont
+    image: codevenom/venom_server:v1
+    ports:
+    - containerPort: 50005
+
+# minikube start 
+# kubectl apply -f kubes.yaml
+# kubectl port-forward pod/datastreamer-pod 50005:50005
+# go run client/client.go 
