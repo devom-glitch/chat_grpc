@@ -8,7 +8,6 @@ spec:
     image: codevenom/server
     ports:
     - containerPort: 50005
-  - name: client
-    image: codevenom/client
+
   imagePullSecrets:
   - name: venomsecret
